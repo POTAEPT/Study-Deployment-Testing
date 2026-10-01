@@ -1,11 +1,8 @@
-name: main
+name: Workflow 1
 on: [push]
 jobs:
   print-text:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Print text from file
-        run: cat dist/index.js
+      - name: Print text
+        run: echo "Hello from Workflow 1"

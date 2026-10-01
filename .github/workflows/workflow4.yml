@@ -1,8 +1,8 @@
-name: Workflow 2
+name: Workflow 4
 
 on:
   workflow_run:
-    workflows: ["Workflow 1"]
+    workflows: ["Workflow 3"]
     types:
       - completed
 
@@ -12,4 +12,4 @@ jobs:
 
     steps:
       - name: Print text
-        run: echo "Hello "World"
+        run: echo "Hello from Workflow 4"
