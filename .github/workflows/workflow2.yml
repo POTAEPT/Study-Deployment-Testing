@@ -1,15 +1,23 @@
-name: Workflow 2
+name: 2. Integration Test
 
 on:
   workflow_run:
-    workflows: ["Workflow 1"]
+    workflows: ["1. Unit Test"]
     types:
       - completed
 
 jobs:
-  job1:
+  run-integration-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print text
-        run: echo "Hello World"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Execute Integration Test
+        run: node dist/IntegrationTest.js

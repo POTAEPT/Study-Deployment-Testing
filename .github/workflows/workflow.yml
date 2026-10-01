@@ -1,16 +1,18 @@
-name: Workflow 1
+name: 1. Unit Test
+
 on: [push]
+
 jobs:
-  job1:
+  run-unit-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "24"
 
-      - name: run test
-        run: node dist/test1.js
+      - name: Execute Unit Test
+        run: node dist/UnitTest.js
