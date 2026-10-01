@@ -1,8 +1,16 @@
 name: Workflow 1
 on: [push]
 jobs:
-  print-text:
+  job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Print text
-        run: echo "Hello from Workflow 1"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: run test
+        run: node dist/test1.js
