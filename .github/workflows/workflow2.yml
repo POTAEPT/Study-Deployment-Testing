@@ -12,4 +12,4 @@ jobs:
 
     steps:
       - name: Print text
-        run: echo "Hello "World"
+        run: echo "Hello World"
