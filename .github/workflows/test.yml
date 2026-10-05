@@ -1,0 +1,30 @@
+name: Unit Tests
+
+on:
+  push:
+    branches: ["lec02"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    defaults:
+      run:
+        working-directory: ./dist
+
+    steps:
+      - name: Pull code from Repository
+        uses: actions/checkout@v4
+
+      - name: install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+
+      - name: install test dependencies
+        run: npm install --no-save jest bcryptjs node-mocks-http mongoose
+
+      - name: run Unit Test
+        run: npx jest __test__/test.test.js --runInBand --config '{}'
