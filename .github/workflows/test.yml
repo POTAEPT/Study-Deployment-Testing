@@ -1,12 +1,14 @@
 name: Unit Tests
 
-on: 
-    push:
-        branches: [ "lec02" ]
+on:
+  push:
+    branches: ["lec02"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     defaults:
       run:
@@ -21,8 +23,8 @@ jobs:
         with:
           node-version: "20.x"
 
-      - name: install ci
-        run: npm ci
+      - name: install test dependencies
+        run: npm install --no-save jest bcryptjs node-mocks-http mongoose
 
       - name: run Unit Test
-        run: npm test
+        run: npx jest __test__/test.test.js --runInBand --config '{}'
